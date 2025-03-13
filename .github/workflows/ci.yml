@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16.x'
+        cache: 'npm'
+    - name: Install dependencies
+      run: npm ci
+    - name: Check code formatting with Prettier
+      run: npx prettier --check "src/**/*.{js,jsx,ts,tsx,json,css,md}"
+    - name: Lint with ESLint
+      run: npx eslint "src/**/*.{js,jsx,ts,tsx}"
+    - name: Run tests
+      run: npm test -- --watchAll=false
+    - name: Build
+      run: npm run build
