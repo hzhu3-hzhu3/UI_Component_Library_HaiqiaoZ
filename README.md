@@ -1,87 +1,74 @@
-# zhu_haiqiao_ui_garden: A React + Storybook UI Component Library
+# UI Component Library with Code Quality Checks
 
-This repository contains a **UI Component Library** built with **React (TypeScript)**, **Storybook**, and **Styled Components**. The application is containerized with **Docker** and can be accessed on **localhost:8083** in production mode.
+This project extends the UI component library from Assignment 12 by adding code quality checks and automated testing.
 
-## Overview
+## Setup Instructions
 
-- **Goal**: Provide reusable UI components (Button, Label, Text, Table, etc.) with default/disabled states, responsive design, and test coverage.
-- **Key Features**:
-  - **React + TypeScript** project initialized via Create React App.
-  - **Storybook** for component exploration and property controls.
-  - **Styled Components** for CSS-in-JS styling.
-  - **Docker** for containerizing the production build.
-  - **Jest + React Testing Library** for unit tests (each component has at least two tests).
+### Prerequisites
 
-## Components Included
+- Node.js (v16 or higher)
+- npm (v7 or higher)
+- Docker
 
-- **Button**
-- **Label**
-- **Text**
-- **Table** (sub-components: TableHeader, TableRow, TableCell, TableFooter)
-- **Dropdown**
-- **RadioButton**
-- **Img**
-- **HeroImage**
-- **Card**
+### Development Setup
 
-Each component folder contains:
-1. `ComponentName.tsx` – The main component
-2. `ComponentName.stories.tsx` – Storybook stories
-3. `ComponentName.types.tsx` – TypeScript interface(s)
-4. `ComponentName.test.tsx` (or `.test.tsx`) – Unit tests
-5. `index.ts` – Aggregated export
+1. Clone the repository:
+   \`\`\`
+   git clone [your-repository-url]
+   cd zhu_haiqiao_ui_garden_build_checks
+   \`\`\`
 
-## Getting Started
-
-### 1. Installation
-
-**Clone this repository**:
-   ```bash
-   git clone <your-repo-url>
-   cd zhu_haiqiao_ui_garden
-```
-**Install dependencies**:
-   ```bash
+2. Install dependencies:
+   \`\`\`
    npm install
-   ```
+   \`\`\`
 
-### 2. Local Development
-**Start Development Server (CRA)**:
-   ```bash
+3. Run development server:
+   \`\`\`
    npm start
-```
-**Run Storybook**:
-   ```bash
+   \`\`\`
+
+4. Run Storybook:
+   \`\`\`
    npm run storybook
-```
-### 3. Testing
-We use Jest and React Testing Library. Each component has at least two tests:
+   \`\`\`
 
-To run the tests:
-   ```bash
+5. Run tests:
+   \`\`\`
    npm test
-```
-This will automatically detect .test.tsx files and execute them.
+   \`\`\`
 
-### 4. Production Build
-To create a production build (output in build/ folder):
-```bash
-npm run build
-```
-### 5. Docker Deployment
-**Build Docker image:**
-```bash
-docker build -t my-library .
-```
-This uses the Dockerfile in the project root and creates a production build of the React app.
+### Code Quality Tools
 
-**Run Docker container:**
-```bash
-docker run -d -p 8083:80 --name zhu_haiqiao_coding_assignment12 my-library
-```
-Exposes the app on http://localhost:8083.
-The container name is zhu_haiqiao_coding_assignment12, as per assignment requirements.
-The working directory in the Dockerfile is zhu_haiqiao_ui_garden.
-Check in browser:
+This project uses the following code quality tools:
 
-Go to http://localhost:8083
+- ESLint for code linting
+- Prettier for code formatting
+- Husky for Git hooks
+- lint-staged for running linters on staged files
+
+Pre-commit hooks automatically run to ensure code quality before committing:
+
+- Prettier formats code
+- ESLint checks for issues
+- Tests run to verify functionality
+
+### CI/CD Pipeline
+
+GitHub Actions are configured to run the same checks on every push and pull request to ensure code quality is maintained even if local pre-commit hooks are bypassed.
+
+### Docker Setup
+
+To run the application in a Docker container:
+
+1. Build the Docker image:
+   \`\`\`
+   docker build -t zhu_haiqiao_coding_assignment13 .
+   \`\`\`
+
+2. Run the Docker container:
+   \`\`\`
+   docker run -p 8018:8018 --name zhu_haiqiao_coding_assignment13 zhu_haiqiao_coding_assignment13
+   \`\`\`
+
+3. Access the application at [http://localhost:8018](http://localhost:8018)
