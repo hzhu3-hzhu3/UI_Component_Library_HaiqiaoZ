@@ -21,3 +21,4 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 8018
 
 CMD ["nginx", "-g", "daemon off;"]
+# Temporary change for Git to detect modification
