@@ -23,14 +23,11 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
 }) => {
   return (
-    <StyledButton
-      disabled={disabled}
-      backgroundColor={backgroundColor}
-      onClick={onClick}
-    >
+    <StyledButton disabled={disabled} backgroundColor={backgroundColor} onClick={onClick}>
       {label}
     </StyledButton>
   );
 };
 
+//echo "console.log('Testing Husky');"
 export default Button;
